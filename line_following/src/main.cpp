@@ -18,7 +18,7 @@ constexpr int SERVO_OPEN = 180;  // FIXME: Change this value
 
 Servo servo;
 
-// --- IR Servo ---
+// --- IR Sensor ---
 constexpr byte IR_LEFT = A1;
 constexpr byte IR_MID = A2;
 constexpr byte IR_RIGHT = A3;
