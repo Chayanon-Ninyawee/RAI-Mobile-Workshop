@@ -2,7 +2,7 @@
 
 /*
 ===============================================================================
- EXERISE 1: ARDUINO PROGRAM STRUCTURE
+ EXERISE 1: Serial.print();
 -------------------------------------------------------------------------------
  1) Upload this code.
  2) Open Serial Monitor at 115200 baud.
