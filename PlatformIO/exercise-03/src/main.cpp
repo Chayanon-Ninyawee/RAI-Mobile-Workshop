@@ -14,13 +14,13 @@
 ===============================================================================
 */
 
-constexpr byte MOTOR_LEFT_1 = 7;
-constexpr byte MOTOR_LEFT_2 = 8;
+constexpr byte MOTOR_LEFT_1 = 8;
+constexpr byte MOTOR_LEFT_2 = 7;
 constexpr byte MOTOR_LEFT_EN = 6;
 
-constexpr byte MOTOR_RIGHT_1 = 4;
-constexpr byte MOTOR_RIGHT_2 = 10;
-constexpr byte MOTOR_RIGHT_EN = 5;
+constexpr byte MOTOR_RIGHT_1 = 5;
+constexpr byte MOTOR_RIGHT_2 = 4;
+constexpr byte MOTOR_RIGHT_EN = 3;
 
 // --- Motor Controller --
 void motorBegin();

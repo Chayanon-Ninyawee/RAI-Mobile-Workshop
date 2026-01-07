@@ -48,7 +48,7 @@ void loop() {
 
     /*
     ===============================================================================
-     EXERISE 2.2: ANALOG → DIGITAL DECISION
+     EXERISE 2.2: ANALOG -> DIGITAL DECISION
     -------------------------------------------------------------------------------
      1) Adjust irTrigger so detection is reliable.
      2) Observe how printed state changes.

@@ -1,19 +1,23 @@
 #include <Arduino.h>
 
+#include "Servo.h"
+
 /*
 ===============================================================================
- EXERISE 3: BASIC MOTOR CONTROL
+ EXERCISE 5: BANG-BANG CONTROL (LINE FOLLOWING)
 -------------------------------------------------------------------------------
- 1) Make the robot move forward for 2 seconds.
- 2) Stop for 2 seconds then loop.
- 3) Change SPEED and observe behavior.
+ In this exercise, you will implement a BANG-BANG controller.
+ NO NEED TO TEST ON ACTUAL LINE, USE Serial.print();
 
- Questions:
-   - Why does PWM control speed?
-   - What happens if SPEED > 255?
+ Example (concept only):
+   IF left sensor sees line -> print "TURN LEFT"
+   ELSE IF right sensor sees line -> print "TURN RIGHT"
+
+ You MUST NOT use PID.
 ===============================================================================
 */
 
+// --- Motors ---
 constexpr byte MOTOR_LEFT_1 = 8;
 constexpr byte MOTOR_LEFT_2 = 7;
 constexpr byte MOTOR_LEFT_EN = 6;
@@ -21,6 +25,18 @@ constexpr byte MOTOR_LEFT_EN = 6;
 constexpr byte MOTOR_RIGHT_1 = 5;
 constexpr byte MOTOR_RIGHT_2 = 4;
 constexpr byte MOTOR_RIGHT_EN = 3;
+
+// --- Servo ---
+constexpr byte SERVO_PIN = 2;
+constexpr int SERVO_CLOSE = 0;   // FIXME: Change this value
+constexpr int SERVO_OPEN = 180;  // FIXME: Change this value
+
+Servo servo;
+
+// --- IR Sensor ---
+constexpr byte IR_LEFT = A1;
+constexpr byte IR_MID = A2;
+constexpr byte IR_RIGHT = A3;
 
 // --- Motor Controller --
 void motorBegin();
@@ -64,18 +80,40 @@ void motorMove(int leftSpeed, int rightSpeed) {
 }
 
 void setup() {
+    Serial.begin(115200);
+
     motorBegin();
+
+    servo.attach(SERVO_PIN);
+    servo.write(SERVO_CLOSE);
+
+    pinMode(IR_LEFT, INPUT);
+    pinMode(IR_MID, INPUT);
+    pinMode(IR_RIGHT, INPUT);
 }
 
-// NOTE: Start your exercise here
+// --- Speed of the robot ---
+int forwardSpeed = 100;
+int turnSpeed = 100;
 
-// Change this to see different behevior.
-// Even change it to negative.
-int SPEED = 150;
+// --- Value that will trigger the IR as being on the line ---
+int irLeftTrigger = 500;   // FIXME: Change this value
+int irMidTrigger = 500;    // FIXME: Change this value
+int irRightTrigger = 500;  // FIXME: Change this value
 
-// Why does it only move forward?
-// I think you know how to fix it.
 void loop() {
-    motorMove(SPEED, SPEED);
-    delay(2000);
+    // NOTE: The value are from 0 - 1023
+    int irLeft = analogRead(IR_LEFT);
+    int irMid = analogRead(IR_MID);
+    int irRight = analogRead(IR_RIGHT);
+
+    // TODO: Write your control code here
+    // Use Serial.print()
+
+    // Debug
+    Serial.print(irLeft);
+    Serial.print(" ");
+    Serial.print(irMid);
+    Serial.print(" ");
+    Serial.println(irRight);
 }

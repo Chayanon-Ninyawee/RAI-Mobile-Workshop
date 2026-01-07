@@ -4,8 +4,6 @@
 ===============================================================================
  EXERISE 1: Serial.print();
 -------------------------------------------------------------------------------
- 1) Upload this code.
- 2) Open Serial Monitor at 115200 baud.
 
  Questions:
    - Why does "Hello from setup" print once?

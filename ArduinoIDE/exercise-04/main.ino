@@ -16,7 +16,7 @@
 ===============================================================================
 */
 
-constexpr byte SERVO_PIN = A0;
+constexpr byte SERVO_PIN = 2;
 constexpr int SERVO_CLOSE = 0;   // FIXME: Change this value
 constexpr int SERVO_OPEN = 180;  // FIXME: Change this value
 
