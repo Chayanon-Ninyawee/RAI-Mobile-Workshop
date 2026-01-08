@@ -2,21 +2,6 @@
 
 #include "Servo.h"
 
-/*
-===============================================================================
- EXERCISE 5: BANG-BANG CONTROL (LINE FOLLOWING)
--------------------------------------------------------------------------------
- In this exercise, you will implement a BANG-BANG controller.
- NO NEED TO TEST ON ACTUAL LINE, USE Serial.print();
-
- Example (concept only):
-   IF left sensor sees line -> print "TURN LEFT"
-   ELSE IF right sensor sees line -> print "TURN RIGHT"
-
- You MUST NOT use PID.
-===============================================================================
-*/
-
 // --- Motors ---
 constexpr byte MOTOR_LEFT_1 = 5;
 constexpr byte MOTOR_LEFT_2 = 4;
@@ -106,9 +91,6 @@ void loop() {
     int irLeft = analogRead(IR_LEFT);
     int irMid = analogRead(IR_MID);
     int irRight = analogRead(IR_RIGHT);
-
-    // TODO: Write your control code here
-    // Use Serial.print()
 
     // Debug
     Serial.print(irLeft);

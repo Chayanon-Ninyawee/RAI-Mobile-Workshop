@@ -3,16 +3,16 @@
 #include "Servo.h"
 
 // --- Motors ---
-constexpr byte MOTOR_LEFT_1 = 7;
-constexpr byte MOTOR_LEFT_2 = 8;
-constexpr byte MOTOR_LEFT_EN = 6;
+constexpr byte MOTOR_LEFT_1 = 5;
+constexpr byte MOTOR_LEFT_2 = 4;
+constexpr byte MOTOR_LEFT_EN = 3;
 
-constexpr byte MOTOR_RIGHT_1 = 4;
-constexpr byte MOTOR_RIGHT_2 = 10;
-constexpr byte MOTOR_RIGHT_EN = 5;
+constexpr byte MOTOR_RIGHT_1 = 8;
+constexpr byte MOTOR_RIGHT_2 = 7;
+constexpr byte MOTOR_RIGHT_EN = 6;
 
 // --- Servo ---
-constexpr byte SERVO_PIN = A0;
+constexpr byte SERVO_PIN = 2;
 constexpr int SERVO_CLOSE = 0;   // FIXME: Change this value
 constexpr int SERVO_OPEN = 180;  // FIXME: Change this value
 
@@ -127,16 +127,26 @@ int forwardSpeed = 100;
 int turnSpeed = 100;
 
 // --- Value that will trigger the IR as being on the line ---
-int irLeftTrigger = 550;
-int irMidTrigger = 550;
-int irRightTrigger = 400;
+int irLeftTrigger = 500;
+int irMidTrigger = 500;
+int irRightTrigger = 500;
 
 // NOTE: This is the pid controller in case you are bored and
 // want to try medium or hard track, which may require PID controller
-float KP = 0.2f;
+float KP = 0.25f;
 float KI = 0.0f;
 float KD = 0.004f;
-int irMidTarget = 500;
+int irMidTarget = 800;
+
+// NOTE: Uncomment this if you want to use PID
+// WARN: Ask TA first before you can use PID
+// void followLine(int irMid) {
+//     float irMidError = irMid - irMidTarget;
+//     int correction = pidCompute(irMidError, KP, KI, KD);
+//     int leftSpeed = forwardSpeed - correction;
+//     int rightSpeed = forwardSpeed + correction;
+//     motorMove(leftSpeed, rightSpeed);
+// }
 
 void loop() {
     // NOTE: The value are from 0 - 1023
@@ -145,14 +155,6 @@ void loop() {
     int irRight = analogRead(IR_RIGHT);
 
     // TODO: Write your control code here
-
-    // NOTE: Uncomment this if you want to use PID
-    // WARN: Ask TA first before you can use PID
-    // float irMidError = irMid - irMidTarget;
-    // int correction = pidCompute(irMidError, KP, KI, KD);
-    // int leftSpeed = forwardSpeed - correction;
-    // int rightSpeed = forwardSpeed + correction;
-    // motorMove(leftSpeed, rightSpeed);
 
     // Debug
     Serial.print(irLeft);

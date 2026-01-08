@@ -2,21 +2,6 @@
 
 #include "Servo.h"
 
-/*
-===============================================================================
- EXERCISE 5: BANG-BANG CONTROL (LINE FOLLOWING)
--------------------------------------------------------------------------------
- In this exercise, you will implement a BANG-BANG controller.
- NO NEED TO TEST ON ACTUAL LINE, USE Serial.print();
-
- Example (concept only):
-   IF left sensor sees line -> print "TURN LEFT"
-   ELSE IF right sensor sees line -> print "TURN RIGHT"
-
- You MUST NOT use PID.
-===============================================================================
-*/
-
 // --- Motors ---
 constexpr byte MOTOR_LEFT_1 = 5;
 constexpr byte MOTOR_LEFT_2 = 4;
@@ -90,6 +75,8 @@ void setup() {
     pinMode(IR_LEFT, INPUT);
     pinMode(IR_MID, INPUT);
     pinMode(IR_RIGHT, INPUT);
+
+    delay(1000);
 }
 
 // --- Speed of the robot ---
@@ -102,18 +89,9 @@ int irMidTrigger = 500;    // FIXME: Change this value
 int irRightTrigger = 500;  // FIXME: Change this value
 
 void loop() {
-    // NOTE: The value are from 0 - 1023
-    int irLeft = analogRead(IR_LEFT);
-    int irMid = analogRead(IR_MID);
-    int irRight = analogRead(IR_RIGHT);
+    servo.write(SERVO_CLOSE);
+    delay(500);
 
-    // TODO: Write your control code here
-    // Use Serial.print()
-
-    // Debug
-    Serial.print(irLeft);
-    Serial.print(" ");
-    Serial.print(irMid);
-    Serial.print(" ");
-    Serial.println(irRight);
+    servo.write(SERVO_OPEN);
+    delay(1000);
 }
